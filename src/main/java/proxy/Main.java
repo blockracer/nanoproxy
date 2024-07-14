@@ -58,10 +58,10 @@ public class Main {
 
 
 
-        port(5252);
+        port(1234);
 
         enableCORS("*", "*", "*");
-        post("/utah81", (req, res) -> {
+        post("/", (req, res) -> {
             res.type("application/json");
 
             String ip = req.headers("CF-Connecting-IP");
@@ -154,13 +154,9 @@ public class Main {
 			nextReset = currentTime + 60000;
 			nextResetMap.put(ip, nextReset);
 
-			if(iswork) {
-				workRequestCounts.put(ip, 0);
-			}
-			else {
-				requestCounts.put(ip, 0);
-				
-			}
+			workRequestCounts.put(ip, 0);
+			requestCounts.put(ip, 0);
+
 			return true;
 		}
 		else {
