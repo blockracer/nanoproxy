@@ -80,7 +80,7 @@ public class Main {
 
             if (action.equals("work_generate")) {
                 // Increase limit for "work_generate" action
-                limit = ip.equals("144.137.220.73") ? 999 : 10; // Allow 999 requests for the specific IP
+                limit = ip.equals("localhost") ? 999 : 10; // Allow 999 requests for the specific IP
 								//
             	if (!allowRequest(ip, limit, true)) {
 			return "Rate limit exceeded";
