@@ -61,6 +61,7 @@ public class Main {
         port(1234);
 
         enableCORS("*", "*", "*");
+	//Add your url path here leave it as / if its for your root domain.
         post("/", (req, res) -> {
             res.type("application/json");
 
@@ -70,17 +71,17 @@ public class Main {
             System.out.println(jsonPayload);
             JsonObject payloadObj = JsonParser.parseString(jsonPayload).getAsJsonObject();
             String action = payloadObj.get("action").getAsString();
-
+		//Add all your blacklisted requests here.
             if (action.equals("send") || action.equals("node_id") || action.equals("node_id_delete") || action.equals("stop")) {
                 return "This action is not allowed";
             }
 
-            // Default limit for actions other than "work_generate"
+            // Default limit for actions other than "work_generate Edit for your requiements"
             int limit = 30;
 
             if (action.equals("work_generate")) {
                 // Increase limit for "work_generate" action
-                limit = ip.equals("localhost") ? 999 : 10; // Allow 999 requests for the specific IP
+                limit = ip.equals("localhost") ? 999 : 10; // Allow 999 requests for the specific IP localhost as the place holder for all other ip's change the 10 value to what you want to limit work generate requests.
 		boolean iswork = true;
 								//
             	if (!allowRequest(ip, limit, iswork)) {
@@ -150,7 +151,7 @@ public class Main {
 		long nextReset = 0L;
 
 		if (!nextResetMap.containsKey(ip)) { 
-			// add the next reset time
+			// Edit the 60000 (1 min) to set the time interval for the request limits.
 			nextReset = currentTime + 60000;
 			nextResetMap.put(ip, nextReset);
 
