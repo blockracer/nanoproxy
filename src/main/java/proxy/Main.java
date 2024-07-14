@@ -58,10 +58,10 @@ public class Main {
 
 
 
-        port(1234);
+        port(5252);
 
         enableCORS("*", "*", "*");
-        post("/", (req, res) -> {
+        post("/utah81", (req, res) -> {
             res.type("application/json");
 
             String ip = req.headers("CF-Connecting-IP");
@@ -81,14 +81,16 @@ public class Main {
             if (action.equals("work_generate")) {
                 // Increase limit for "work_generate" action
                 limit = ip.equals("localhost") ? 999 : 10; // Allow 999 requests for the specific IP
+		boolean iswork = true;
 								//
-            	if (!allowRequest(ip, limit, true)) {
+            	if (!allowRequest(ip, limit, iswork)) {
 			return "Rate limit exceeded";
 		}
             }
 	    else {
+		boolean iswork = false;
 
-            	if (!allowRequest(ip, limit, false)) {
+            	if (!allowRequest(ip, limit, iswork)) {
                 	return "Rate limit exceeded";
             	}
 	    }
@@ -151,6 +153,14 @@ public class Main {
 			// add the next reset time
 			nextReset = currentTime + 60000;
 			nextResetMap.put(ip, nextReset);
+
+			if(iswork) {
+				workRequestCounts.put(ip, 0);
+			}
+			else {
+				requestCounts.put(ip, 0);
+				
+			}
 			return true;
 		}
 		else {
@@ -170,6 +180,7 @@ public class Main {
 				}
 			}
 			else {
+				
 				int workRequestCount = workRequestCounts.get(ip);
 
 				if(workRequestCount > limit) {
