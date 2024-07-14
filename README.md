@@ -55,7 +55,7 @@ RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
-                                                                                                                                                                                                             ~                
+                                                                                                                                                                                                                           
 ```
 Now you can run the proxy like this:
 
