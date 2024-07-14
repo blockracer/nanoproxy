@@ -59,7 +59,7 @@ WantedBy=multi-user.target
 Now you can run the proxy like this:
 
 ```bash
-sudo service proxy start
+sudo service [servicename] start
 
 ```
 
