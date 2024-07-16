@@ -48,7 +48,7 @@ Here is an example of how I set the file:
 ```bash
 [Service]
 ExecStart=/home/username/.sdkman/candidates/java/11.0.12-zulu/bin/java -jar /path/to/proxy-1-all.jar
-User=username
+User=[yourusername]
 Type=simple
 Restart=on-failure
 RestartSec=10
