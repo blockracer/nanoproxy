@@ -31,11 +31,8 @@ import spark.Response;
 public class Main {
 
     private static final Map<String, Integer> requestCounts = new ConcurrentHashMap<>();
-
     private static final Map<String, Integer> workRequestCounts = new ConcurrentHashMap<>();
-
     private static final Map<String, Long> nextResetMap = new ConcurrentHashMap<>();
-
     private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
 
