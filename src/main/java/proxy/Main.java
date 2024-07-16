@@ -96,7 +96,7 @@ public class Main {
             	}
 	    }
 		
-            String nanoNodeRpcAddress = "[::1]"; // Your rpc address, it could run on ip4 or ip6 address.
+            String nanoNodeRpcAddress = "[::1]"; // Your rpc address, it could run on ipv4 or ipv6 address.
             int rpcPort = 7076; // Replace with your actual RPC port
 
             String url = "http://" + nanoNodeRpcAddress + ":" + rpcPort;
