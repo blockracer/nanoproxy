@@ -57,7 +57,7 @@ public class Main {
 	}, 0, 5, TimeUnit.SECONDS);
 
 
-
+	//This is the port of yur proxy, change to the port you want.
         port(1234);
 
         enableCORS("*", "*", "*");
@@ -95,8 +95,8 @@ public class Main {
                 	return "Rate limit exceeded";
             	}
 	    }
-
-            String nanoNodeRpcAddress = "[::1]";
+		
+            String nanoNodeRpcAddress = "[::1]"; // Your rpc address, it could run on ip4 or ip6 address.
             int rpcPort = 7076; // Replace with your actual RPC port
 
             String url = "http://" + nanoNodeRpcAddress + ":" + rpcPort;
