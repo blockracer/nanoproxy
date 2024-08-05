@@ -61,7 +61,7 @@ public class Main {
 	//Add your url path here leave it as / if its for your root domain.
         post("/", (req, res) -> {
             res.type("application/json");
-
+	    //If you are not using cloudflare for your domain replace below with String ip = req.ip();
             String ip = req.headers("CF-Connecting-IP");
 
             String jsonPayload = req.body();
